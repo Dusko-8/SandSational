@@ -1,0 +1,4 @@
+﻿-skeleton stránky
+- Login register
+- Count of pllayers 
+- 
