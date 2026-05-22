@@ -6,7 +6,11 @@ info:
 servers:
   - url: http://localhost:8080
     description: Generated server url
+security:
+  - bearerAuth: []
 tags:
+  - name: Upgrades
+    description: Upgrade management
   - name: Users
     description: User management
 paths:
@@ -23,14 +27,14 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-        "400":
-          description: Bad Request
+        "401":
+          description: Unauthorized
           content:
             '*/*':
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-        "401":
-          description: Unauthorized
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -61,14 +65,14 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-        "400":
-          description: Invalid request
         "401":
           description: Unauthorized
           content:
             '*/*':
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
+        "400":
+          description: Invalid request
         "201":
           description: User created
           content:
@@ -99,14 +103,14 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-        "400":
-          description: Bad Request
+        "401":
+          description: Unauthorized
           content:
             '*/*':
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-        "401":
-          description: Unauthorized
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -137,14 +141,14 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-        "400":
-          description: Bad Request
+        "401":
+          description: Unauthorized
           content:
             '*/*':
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-        "401":
-          description: Unauthorized
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -161,6 +165,35 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UserResponse"
+  /api/upgrades:
+    get:
+      tags:
+        - Upgrades
+      summary: List all upgrades
+      operationId: getUpgrades
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Unauthenticated user
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "200":
+          description: Upgrades listed
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UpgradeResponse"
   /api/health:
     get:
       tags:
@@ -173,14 +206,14 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-        "400":
-          description: Bad Request
+        "401":
+          description: Unauthorized
           content:
             '*/*':
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-        "401":
-          description: Unauthorized
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -203,14 +236,14 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-        "400":
-          description: Bad Request
+        "401":
+          description: Unauthorized
           content:
             '*/*':
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-        "401":
-          description: Unauthorized
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -297,3 +330,29 @@ components:
           format: int64
         user:
           $ref: "#/components/schemas/UserResponse"
+    UpgradeResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        maxLvl:
+          type: integer
+          format: int32
+        iconKey:
+          type: string
+        code:
+          type: string
+        initialPrice:
+          type: integer
+          format: int64
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      scheme: bearer
+      bearerFormat: JWT

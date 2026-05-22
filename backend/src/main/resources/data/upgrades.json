@@ -1,0 +1,18 @@
+[
+  {
+    "code": "sand_speed",
+    "maxLvl": 10,
+    "name": "Sandsational speed",
+    "description": "Increase the speed at which send falls.",
+    "iconKey": "sand_speed",
+    "initialPrice": 100
+  },
+  {
+    "code": "sand_price",
+    "maxLvl": 10,
+    "name": "Sandsational price",
+    "description": "Increases price of sand.",
+    "iconKey": "sand_price",
+    "initialPrice": 200
+  }
+]
