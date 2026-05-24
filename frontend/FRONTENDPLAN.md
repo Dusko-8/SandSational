@@ -1,4 +1,5 @@
 ﻿-skeleton stránky
 - Login register
 - Count of pllayers 
+- hore v strede sú resources nech je to velke na 3 cisla  potom po 999 nec ide na 1K 1.23K
 - 

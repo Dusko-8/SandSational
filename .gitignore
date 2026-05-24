@@ -4,6 +4,6 @@ dist/
 .env.*
 !.env.example
 *.log
+*.pdf
 .DS_Store
 Thumbs.db
-

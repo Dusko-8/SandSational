@@ -6,6 +6,7 @@ REST first. The browser handles visuals; the backend owns the real economy.
 
 - `GET /api/game/state`
   - Loads the authoritative player state.
+  - Includes resource balances such as sand, dirt, stone, silver, gold, platinum, emerald, diamond, and obsidian.
 
 ## Actions
 
@@ -25,4 +26,3 @@ REST first. The browser handles visuals; the backend owns the real economy.
 ## Rule
 
 The frontend sends intent. The backend calculates and validates rewards, costs, offline gains, and ownership.
-

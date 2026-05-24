@@ -141,14 +141,6 @@ For a browser game inspired by Particul:
 
 React can be added later for complex menus, but I would start with Phaser + TypeScript first.
 
+## Game Design Docs
 
-## Resoureces
-- Sand 
-- Dirt
-- Stone
-- Silver
-- Gold 
-- Platinum
-- Emerald
-- Diamond 
-- Obsidian 
+- [Resources](resources.md)
